@@ -6,7 +6,7 @@ public class ArrayOps
     }
     public static int findMissingInt(int[] array) 
     {
-        int missing = -1;
+        int missing = 1;
         int temp;
         for (int i = 0; i < array.length; i++) 
         {

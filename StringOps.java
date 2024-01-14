@@ -23,6 +23,7 @@ public class StringOps {
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) 
     {
+
     }
     public static String capVowelsLowRest (String string) 
     {
@@ -46,54 +47,46 @@ public class StringOps {
         }
         return result;
     }
-    public static String camelCase (String string)
+    public static String camelCase(String string) 
     {
-        char check;
-        char checkspace;
-        String finalresult = "";
-        for( int i = 0; i < string.length(); i++)
-        {
-            check = string.charAt(i);
-            if ( check > 64 && check < 91)
-            {
-                finalresult = finalresult + (char)(check+32);
-                break;
-            }
-            else
-            {
-                finalresult = finalresult + (char)(check);
-                break;
-            }
-        }
-         for ( int i = 1; i < string.length(); i++)
-        {
-            check = string.charAt(i);
-            checkspace = string.charAt(i+1);
-            if( check == 32&& checkspace > 32)
-            {
-                if ( checkspace > 64 && checkspace < 91)
-                {
-                    finalresult = finalresult + (char)(checkspace);
-                    break;
-                }
-                else
-                {
-                    finalresult = finalresult + (char)(checkspace-32);
-                    break;
-                }
-            }
-        }
+        String result1 = "";
         for (int i = 0; i < string.length(); i++) 
         {
-            char c = string.charAt(i);
-            if (c == ' ') 
+            char lettercheck1 = string.charAt(i);
+            if (lettercheck1 >= 65 && lettercheck1 <= 90) 
             {
-                continue;
+                result1 = result1 + (char) (lettercheck1 + 32);
+            } else 
+            {
+                result1 = result1 + (char) (lettercheck1);
             }
-            finalresult += c;
+        }
+        for (int i = 0; i < result1.length() - 1; i++) 
+        {
+            char lettercheck1 = result1.charAt(i);
+            char lettercheck2 = result1.charAt(i + 1);
+            if (lettercheck1 == 32 && lettercheck2 > 32) 
+            {
+                if (lettercheck2 >= 97 && lettercheck2 <= 122) {
+                    result1 = result1.substring(0, i + 1) + (char) (lettercheck2 - 32) + result1.substring(i + 2);
+                } 
+                else 
+                {
+                    result1 = result1 + (char) (lettercheck2);
+                }
+            }
+        }
+        String finalresult = "";
+        for (int i = 0; i < result1.length(); i++) {
+            char lettercheck3 = result1.charAt(i);
+            if (lettercheck3 != 32) {
+                finalresult = finalresult + (char) (lettercheck3);
+            }
         }
         return finalresult;
     }
+    
+         
     public static int[] allIndexOf(String string, char chr) 
     {
         int count = 0;
