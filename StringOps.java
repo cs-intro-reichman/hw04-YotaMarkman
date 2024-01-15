@@ -1,4 +1,5 @@
-public class StringOps {
+public class StringOps 
+{
     ////////////////////////////////////////////////////////////
     //////                                               ///////
     //////              Reminder:                        ///////
@@ -23,30 +24,40 @@ public class StringOps {
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) 
     {
-
+        String cameltest  = "One two tHRee world";
+        System.out.println ( capVowelsLowRest(cameltest));
     }
     public static String capVowelsLowRest (String string) 
     {
         char lettercheck;
         String result = "";
-        for ( int i = 0; i < string.length(); i++ )
+        for ( int i = 0; i < string.length(); i++)
         {
             lettercheck = string.charAt(i);
-            if( lettercheck == 97 || lettercheck == 101 || lettercheck == 105 || lettercheck == 111 || lettercheck == 117 )
+            if ( lettercheck > 64 && lettercheck < 91)
             {
-                result = result + (char)(lettercheck - 32);	
-            }
-            else if ( ( lettercheck > 64 && lettercheck < 91 ) && ( lettercheck != 65 || lettercheck != 69 || lettercheck != 73 || lettercheck != 79 || lettercheck != 85))
-            {
-                result = result + (char)(lettercheck + 32);	
+                result = result + (char)(lettercheck + 32);
             }
             else
             {
                 result = result + (char)(lettercheck);
             }
         }
-        return result;
-    }
+        String result2 = "";
+        for ( int i = 0; i < result.length(); i++)
+        {
+            lettercheck = result.charAt(i);
+            if ( lettercheck == 97 || lettercheck == 101 || lettercheck == 105 || lettercheck == 111 || lettercheck == 117 )
+            {
+                result2 = result2 + (char)(lettercheck - 32);
+            }
+            else
+            {
+                result2 = result2 + (char)(lettercheck);
+            }
+        }
+        return result2;
+    }    
     public static String camelCase(String string) 
     {
         String result1 = "";
