@@ -1,4 +1,5 @@
-public class StringOps {
+public class StringOps 
+{
     ////////////////////////////////////////////////////////////
     //////                                               ///////
     //////              Reminder:                        ///////
@@ -21,22 +22,102 @@ public class StringOps {
     //////        in Recitation 3 question 5             ///////
     //////                                               ///////
     ////////////////////////////////////////////////////////////
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) 
+    {
+        String cameltest  = "One two tHRee world";
+        System.out.println ( capVowelsLowRest(cameltest));
     }
-
-    public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+    public static String capVowelsLowRest (String string) 
+    {
+        char lettercheck;
+        String result = "";
+        for ( int i = 0; i < string.length(); i++)
+        {
+            lettercheck = string.charAt(i);
+            if ( lettercheck > 64 && lettercheck < 91)
+            {
+                result = result + (char)(lettercheck + 32);
+            }
+            else
+            {
+                result = result + (char)(lettercheck);
+            }
+        }
+        String result2 = "";
+        for ( int i = 0; i < result.length(); i++)
+        {
+            lettercheck = result.charAt(i);
+            if ( lettercheck == 97 || lettercheck == 101 || lettercheck == 105 || lettercheck == 111 || lettercheck == 117 )
+            {
+                result2 = result2 + (char)(lettercheck - 32);
+            }
+            else
+            {
+                result2 = result2 + (char)(lettercheck);
+            }
+        }
+        return result2;
+    }    
+    public static String camelCase(String string) 
+    {
+        String result1 = "";
+        for (int i = 0; i < string.length(); i++) 
+        {
+            char lettercheck1 = string.charAt(i);
+            if (lettercheck1 >= 65 && lettercheck1 <= 90) 
+            {
+                result1 = result1 + (char) (lettercheck1 + 32);
+            } else 
+            {
+                result1 = result1 + (char) (lettercheck1);
+            }
+        }
+        for (int i = 0; i < result1.length() - 1; i++) 
+        {
+            char lettercheck1 = result1.charAt(i);
+            char lettercheck2 = result1.charAt(i + 1);
+            if (lettercheck1 == 32 && lettercheck2 > 32) 
+            {
+                if (lettercheck2 >= 97 && lettercheck2 <= 122) {
+                    result1 = result1.substring(0, i + 1) + (char) (lettercheck2 - 32) + result1.substring(i + 2);
+                } 
+                else 
+                {
+                    result1 = result1 + (char) (lettercheck2);
+                }
+            }
+        }
+        String finalresult = "";
+        for (int i = 0; i < result1.length(); i++) {
+            char lettercheck3 = result1.charAt(i);
+            if (lettercheck3 != 32) {
+                finalresult = finalresult + (char) (lettercheck3);
+            }
+        }
+        return finalresult;
     }
-
-    public static String camelCase (String string) {
-        // Write your code here:
-        return "";
-    }
-
-    public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+    
+         
+    public static int[] allIndexOf(String string, char chr) 
+    {
+        int count = 0;
+        for (int i = 0; i < string.length(); i++) 
+        {
+            if (chr == string.charAt(i)) 
+            {
+                count++;
+            }
+        }
+        int[] repeated = new int[count];
+        int index = 0;
+        for (int i = 0; i < string.length(); i++) 
+        {
+            if (chr == string.charAt(i)) 
+            {
+                repeated[index] = i;
+                index++;
+            }
+        }
+        return repeated;
     }
 }
